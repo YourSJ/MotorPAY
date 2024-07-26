@@ -31,19 +31,17 @@ public class LeaveRequest extends javax.swing.JFrame {
     private List<String[]> leaveBalances;
     private List<LeaveRequestData> leaveRequests = new ArrayList<>();
     private String leaveBalancesFilePath = "src\\motorph9\\LeaveBalances.csv";
+    private final Dashboard dashboard;
     /**
      * Creates new form LeaveRequest
      */
-    public LeaveRequest() {
+    public LeaveRequest(Dashboard dashboard) {
         initComponents();
         
         leaveTracker = loadLeaveTracker("src\\motorph9\\LeaveBalances.csv");
         csvReader = new CSVReader("src\\motorph9\\LeaveBalances.csv");
+        this.dashboard = dashboard;
 
-        //loadLeaveBalancesFromCSV();
-        //updateLeaveBalances();
-        
-        //jButtonCancel.setEnabled(false);
         jButtonClear.setEnabled(false);
         
         ArrayList<Character> sample = new ArrayList<Character>();
@@ -577,8 +575,11 @@ public class LeaveRequest extends javax.swing.JFrame {
 
     private void jButtonDashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDashboardActionPerformed
         // TODO add your handling code here:
-        Dashboard newClassInstance = new Dashboard();
-                 newClassInstance.setVisible(true);
+        
+        dashboard.setVisible(true);
+       /*Dashboard newClassInstance = new Dashboard(firstName,currentEmployeeId);
+                 newClassInstance.setVisible(true);*/
+
                  
                  dispose(); 
     }//GEN-LAST:event_jButtonDashboardActionPerformed
@@ -793,7 +794,7 @@ public class LeaveRequest extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LeaveRequest().setVisible(true);
+                //new LeaveRequest().setVisible(true);
             }
         });
     }

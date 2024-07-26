@@ -42,15 +42,15 @@ import java.awt.event.KeyEvent;
 public class AddEmployee extends javax.swing.JFrame {
 
     private static final String CSV_FILE = "src\\motorph9\\EmployeeDetails.csv";
-    
+    private final Dashboard dashboard;
     /**
      * Creates new form AddEmployee
      */
-    public AddEmployee() {
+    public AddEmployee(Dashboard dashboard) {
         initComponents();
-        
          // Read CSV data and populate the JTable
         populateTableFromCSV(CSV_FILE);
+        this.dashboard = dashboard;
            
         Timer timer = new Timer(1000, new ActionListener() {
             @Override
@@ -470,16 +470,15 @@ public class AddEmployee extends javax.swing.JFrame {
 
     private void jButtonDashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDashboardActionPerformed
         // TODO add your handling code here:
-        Dashboard newClassInstance = new Dashboard();
-                newClassInstance.setVisible(true);
-
+        
+        dashboard.setVisible(true);
                 dispose();
     }//GEN-LAST:event_jButtonDashboardActionPerformed
 
     private void jButtonEmployeelistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEmployeelistActionPerformed
         // TODO add your handling code here:
-        Employee newClassInstance = new Employee();
-                newClassInstance.setVisible(true);
+         Employee newClassInstance = new Employee(dashboard);
+                 newClassInstance.setVisible(true);
 
                 dispose();
     }//GEN-LAST:event_jButtonEmployeelistActionPerformed
@@ -657,11 +656,11 @@ public class AddEmployee extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
+        /*java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new AddEmployee().setVisible(true);
             }
-        });
+        });*/
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

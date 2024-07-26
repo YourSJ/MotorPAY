@@ -20,13 +20,13 @@ import java.time.YearMonth;
  */
 public class EmployeeRecords extends javax.swing.JFrame {
     
-   // private List<String> employeeNumbers
-    private String employeeNo;
+    private String currentEmployeeId;
+    private final Dashboard dashboard;
 
     /**
      * Creates new form EmployeeDetails
      */
-    public EmployeeRecords (String employeeNumber) {
+    public EmployeeRecords (String employeeNumber, Dashboard dashboard) {
         
         initComponents();
         
@@ -37,6 +37,9 @@ public class EmployeeRecords extends javax.swing.JFrame {
         setLocationRelativeTo(null); 
         
         initializeMonthComboBox();
+        
+        this.currentEmployeeId = employeeNumber;
+        this.dashboard = dashboard;
         
         Timer timer = new Timer(1000, new ActionListener() {
             @Override
@@ -63,12 +66,6 @@ public class EmployeeRecords extends javax.swing.JFrame {
 
          
     }
-    
-    public EmployeeRecords() {
-       
-        
-    }
-
     
     private void updateTimeAndDate() {
         
@@ -687,8 +684,8 @@ public class EmployeeRecords extends javax.swing.JFrame {
 
     private void jButtonEmployeelistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEmployeelistActionPerformed
         // TODO add your handling code here:
-        Employee newClassInstance = new Employee();
-                newClassInstance.setVisible(true);
+        Employee newClassInstance = new Employee(dashboard);
+                 newClassInstance.setVisible(true);
                 
                 dispose();
 
@@ -725,7 +722,7 @@ public class EmployeeRecords extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EmployeeRecords().setVisible(true);
+                //new EmployeeRecords().setVisible(true);
             }
         });
     }

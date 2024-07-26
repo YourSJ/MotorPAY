@@ -28,7 +28,7 @@ import javax.swing.*;
 public class Login extends javax.swing.JFrame {
 
     private static final String CSV_FILE = "src/motorph9/Credentials.csv";
-    private String fname;
+    //private String fname;
     
     
     
@@ -193,7 +193,7 @@ public class Login extends javax.swing.JFrame {
 
                 try {
                     user = validateLogin(userName, passWord);
-                    user.setFirstname(fname);
+                    //user.setFirstname(fname);
                 } catch (IOException ex) {
                     Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -208,9 +208,10 @@ public class Login extends javax.swing.JFrame {
                                                   "Log In Successful!!!",
                                                   "",
                                                   JOptionPane.PLAIN_MESSAGE);
+                     //user.setFirstname(fname);
 
                     
-                    Dashboard newClassInstance = new Dashboard(user.getFirstName());
+                    Dashboard newClassInstance = new Dashboard(user.getFirstName(),user.getEmployeeId());
                         newClassInstance.setVisible(true);
                         
                     dispose();
@@ -226,8 +227,8 @@ public class Login extends javax.swing.JFrame {
             List<String[]> allData = csvReader.readAll();
             for (String[] row : allData) {
                 if (row[0].equalsIgnoreCase(userName) && row[1].equals(passWord)) {
-                    fname = row[2];
-                    return new User(userName, row[2]);
+                    //fname = row[2];
+                    return new User(userName, row[2], row[3]);
                 }
             }
         } catch (CsvException e) {

@@ -11,10 +11,12 @@ package motorph9;
 public class User {
     private String username;
     private String firstName;
+    private String employeeId;
 
-    public User(String username, String firstName) {
+    public User(String username, String firstName, String employeeId) {
         this.username = username;
         this.firstName = firstName;
+        this.employeeId = employeeId;
     }
 
     public User() {
@@ -31,6 +33,9 @@ public class User {
     public String getFirstName() {
         return firstName;
     }    
+    public String getEmployeeId() {
+        return employeeId;
+    }
     
 }   
     

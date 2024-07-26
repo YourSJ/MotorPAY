@@ -39,24 +39,23 @@ import java.util.logging.Logger;
 public class Employee extends javax.swing.JFrame {
     
     private static final String CSV_FILE = "src\\motorph9\\EmployeeDetails.csv";
+    private final Dashboard dashboard;
     
     /**
      * Creates new form Employee
      */
-    public Employee() {
+    public Employee(Dashboard dashboard) {
         initComponents();
        
-        
         setLocationRelativeTo(null);
         
-       
         populateTableFromCSV(CSV_FILE);
 
         jButtonViewEmployee.setEnabled(false);
 
         jButtonUpdate.setEnabled(false); 
         
-       
+        this.dashboard = dashboard;
         
         jTableEmployees.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
@@ -595,8 +594,9 @@ public class Employee extends javax.swing.JFrame {
 
     private void jButtonDashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDashboardActionPerformed
         
-        Dashboard newClassInstance = new Dashboard();
-                 newClassInstance.setVisible(true);
+        dashboard.setVisible(true);
+        /*Dashboard newClassInstance = new Dashboard(firstName,currentEmployeeId);
+                 newClassInstance.setVisible(true);*/
                  
                  dispose();
     }//GEN-LAST:event_jButtonDashboardActionPerformed
@@ -619,7 +619,7 @@ public class Employee extends javax.swing.JFrame {
                     String pagibigNo = (String) jTableEmployees.getValueAt(selectedRow, 6);
 
                     
-                    EmployeeRecords newClassInstance = new EmployeeRecords(employeeNumber);
+                    EmployeeRecords newClassInstance = new EmployeeRecords(employeeNumber,dashboard);
                             newClassInstance.setVisible(true);
                             
                             dispose();
@@ -668,7 +668,7 @@ public class Employee extends javax.swing.JFrame {
 
     private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
         // TODO add your handling code here:
-        AddEmployee newClassInstance = new AddEmployee();
+        AddEmployee newClassInstance = new AddEmployee(dashboard);
                    newClassInstance.setVisible(true);
                 
                 dispose();
@@ -702,11 +702,11 @@ public class Employee extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
+        /*java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Employee().setVisible(true);
             }
-        });
+        });*/
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
